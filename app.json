@@ -10,17 +10,14 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "android":{
+      "package": "com.sanket.MinorProjectI",
+      "config":{
+        "googleSignIn":{
+          "apiKey":"823557795944-2f1dq6b57n64t2dcdgf3vtlrpd7mvo4q.apps.googleusercontent.com",
+          "certificateHash":"22C0CFFE0B605BA68B1BF15BA5EBBE289C4BE177"
+        }
+      }
     }
   }
 }
