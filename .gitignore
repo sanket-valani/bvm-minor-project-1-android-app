@@ -1,6 +1,7 @@
 node_modules/**/*
 .expo/*
 credentials.js
+app.json
 npm-debug.*
 *.jks
 *.p8

@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import firebase, { auth } from 'firebase';
 import { firbase_js } from "../credentials";
 
 class Fire{
@@ -9,14 +9,16 @@ class Fire{
   
   init = () => {
     if (!firebase.apps.length){
-      firebase.initalizeApp(firbase_js);
+      firebase.initializeApp(firbase_js);
     }
   }
 
   checkAuth = () => {
     firebase.auth().onAuthStateChanged(user =>{
-      if(!user){
-        firebase.auth().signInAnonymously();
+      if(!user && global.ID_TOKEN != null || global.ID_TOKEN != undefined){
+        // firebase.auth().signInAnonymously();
+        const googleCredential = auth.GoogleAuthProvider.credential(global.ID_TOKEN);
+        firebase.auth().signInWithCredential(googleCredential);
       }
     })
   }
@@ -28,7 +30,6 @@ class Fire{
         timestamp: firebase.database.ServerValue.TIMESTAMP,
         user: item.user
       }
-
       this.db.push(message)
     })
   }  
@@ -55,7 +56,7 @@ class Fire{
   }
 
   get db() {
-    return firebase.database.ref("messages");
+    return firebase.database().ref("messages");
   }
 
   get uid() {

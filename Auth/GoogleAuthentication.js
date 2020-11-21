@@ -1,5 +1,4 @@
 import * as Google from "expo-google-app-auth";
-import { AsyncStorage } from "react-native";
 import { GoogleAuthentication_js } from "../credentials";
 
 const ANDROID_CLIENT_ID = GoogleAuthentication_js.ANDROID_CLIENT_ID;
@@ -22,8 +21,6 @@ export const signInWithGoogle = async ( request ) => {
     });
 
     if (result.type === "success") {
-      console.log("success : \n", result);
-      AsyncStorage.setItem("USER_SIGNIN_DETAILS",JSON.stringify(result)); 
       return result;
     } else {
       return { error: false, success: false, message: "Login process was cancelled"};
